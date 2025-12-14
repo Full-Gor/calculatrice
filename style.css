@@ -48,8 +48,16 @@ body {
     transform: scale(1.1);
 }
 
-.control-btn .icon {
-    font-size: 18px;
+.control-btn .icon-svg {
+    width: 18px;
+    height: 18px;
+}
+
+.control-btn .icon-text {
+    font-size: 14px;
+    font-weight: 600;
+    font-style: italic;
+    letter-spacing: -0.5px;
 }
 
 /* ==================== AFFICHAGE ==================== */
