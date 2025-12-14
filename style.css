@@ -1,0 +1,465 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    transition: background 0.3s ease;
+}
+
+/* ==================== CALCULATRICE ==================== */
+.calculator {
+    width: 320px;
+    border-radius: 24px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.calculator.scientific {
+    width: 400px;
+}
+
+/* ==================== CONTROLES ==================== */
+.controls {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 16px;
+}
+
+.control-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.control-btn:hover {
+    transform: scale(1.1);
+}
+
+.control-btn .icon {
+    font-size: 18px;
+}
+
+/* ==================== AFFICHAGE ==================== */
+.display {
+    padding: 20px;
+    text-align: right;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.previous {
+    font-size: 16px;
+    min-height: 24px;
+    opacity: 0.6;
+    word-break: break-all;
+}
+
+.current {
+    font-size: 48px;
+    font-weight: 300;
+    word-break: break-all;
+    line-height: 1.2;
+}
+
+/* ==================== BOUTONS ==================== */
+.buttons {
+    padding: 8px;
+}
+
+.standard-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+.scientific-buttons {
+    display: none;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.calculator.scientific .scientific-buttons {
+    display: grid;
+}
+
+.btn {
+    height: 60px;
+    border: none;
+    border-radius: 16px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    font-weight: 500;
+}
+
+.btn:hover {
+    transform: scale(0.96);
+}
+
+.btn:active {
+    transform: scale(0.92);
+}
+
+.btn.zero {
+    grid-column: span 2;
+}
+
+.btn.func {
+    font-size: 16px;
+}
+
+/* ==================== MENU DES THEMES ==================== */
+.theme-menu {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    background: white;
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    display: none;
+    z-index: 100;
+    opacity: 0;
+    transition: all 0.2s ease;
+}
+
+.theme-menu.active {
+    display: block;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.theme-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background 0.2s ease;
+}
+
+.theme-option:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.theme-preview {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.light-preview { background: #f5f5f5; }
+.dark-preview { background: #1c1c1e; }
+.gradient-preview { background: linear-gradient(135deg, #667eea, #764ba2); }
+.neon-preview { background: linear-gradient(135deg, #0f0f23, #00ff88); }
+.minimal-preview { background: #ffffff; border: 2px solid #000; }
+
+/* ==================== THEME CLAIR (défaut) ==================== */
+body.light {
+    background: #e8e8ed;
+}
+
+.light .calculator {
+    background: #f5f5f5;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.light .control-btn {
+    background: rgba(0, 0, 0, 0.05);
+    color: #333;
+}
+
+.light .display {
+    color: #000;
+}
+
+.light .btn.number {
+    background: #fff;
+    color: #000;
+}
+
+.light .btn.operator {
+    background: #e0e0e0;
+    color: #000;
+}
+
+.light .btn.func {
+    background: #e8e8e8;
+    color: #333;
+}
+
+.light .btn.clear {
+    background: #ff9500;
+    color: #fff;
+}
+
+.light .btn.equals {
+    background: #007aff;
+    color: #fff;
+}
+
+/* ==================== THEME SOMBRE ==================== */
+body.dark {
+    background: #000;
+}
+
+.dark .calculator {
+    background: #1c1c1e;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.dark .control-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.dark .display {
+    color: #fff;
+}
+
+.dark .btn.number {
+    background: #333;
+    color: #fff;
+}
+
+.dark .btn.operator {
+    background: #505050;
+    color: #fff;
+}
+
+.dark .btn.func {
+    background: #2c2c2e;
+    color: #8e8e93;
+}
+
+.dark .btn.clear {
+    background: #ff9f0a;
+    color: #000;
+}
+
+.dark .btn.equals {
+    background: #0a84ff;
+    color: #fff;
+}
+
+.dark .theme-menu {
+    background: #2c2c2e;
+    color: #fff;
+}
+
+.dark .theme-option:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* ==================== THEME GRADIENT ==================== */
+body.gradient {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.gradient .calculator {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.gradient .control-btn {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+.gradient .display {
+    color: #fff;
+}
+
+.gradient .btn.number {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+.gradient .btn.operator {
+    background: rgba(255, 255, 255, 0.3);
+    color: #fff;
+}
+
+.gradient .btn.func {
+    background: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.gradient .btn.clear {
+    background: rgba(255, 150, 0, 0.8);
+    color: #fff;
+}
+
+.gradient .btn.equals {
+    background: rgba(255, 255, 255, 0.9);
+    color: #667eea;
+}
+
+/* ==================== THEME NEON ==================== */
+body.neon {
+    background: #0f0f23;
+}
+
+.neon .calculator {
+    background: #1a1a2e;
+    box-shadow: 0 0 40px rgba(0, 255, 136, 0.2),
+                inset 0 0 60px rgba(0, 255, 136, 0.05);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+}
+
+.neon .control-btn {
+    background: transparent;
+    color: #00ff88;
+    border: 1px solid #00ff88;
+}
+
+.neon .display {
+    color: #00ff88;
+    text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+}
+
+.neon .btn.number {
+    background: transparent;
+    color: #00ff88;
+    border: 1px solid rgba(0, 255, 136, 0.3);
+}
+
+.neon .btn.number:hover {
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
+}
+
+.neon .btn.operator {
+    background: transparent;
+    color: #ff00ff;
+    border: 1px solid rgba(255, 0, 255, 0.3);
+}
+
+.neon .btn.operator:hover {
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.4);
+}
+
+.neon .btn.func {
+    background: transparent;
+    color: #00ffff;
+    border: 1px solid rgba(0, 255, 255, 0.3);
+}
+
+.neon .btn.func:hover {
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+}
+
+.neon .btn.clear {
+    background: transparent;
+    color: #ff6b35;
+    border: 1px solid #ff6b35;
+}
+
+.neon .btn.clear:hover {
+    box-shadow: 0 0 15px rgba(255, 107, 53, 0.4);
+}
+
+.neon .btn.equals {
+    background: #00ff88;
+    color: #0f0f23;
+    border: none;
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+}
+
+.neon .theme-menu {
+    background: #1a1a2e;
+    color: #00ff88;
+    border: 1px solid rgba(0, 255, 136, 0.3);
+}
+
+/* ==================== THEME MINIMAL ==================== */
+body.minimal {
+    background: #fff;
+}
+
+.minimal .calculator {
+    background: #fff;
+    box-shadow: none;
+    border: 2px solid #000;
+    border-radius: 0;
+}
+
+.minimal .control-btn {
+    background: transparent;
+    color: #000;
+    border: 1px solid #000;
+    border-radius: 0;
+}
+
+.minimal .display {
+    color: #000;
+    border-bottom: 2px solid #000;
+}
+
+.minimal .btn {
+    background: #fff;
+    color: #000;
+    border: 1px solid #000;
+    border-radius: 0;
+}
+
+.minimal .btn.clear {
+    background: #000;
+    color: #fff;
+}
+
+.minimal .btn.equals {
+    background: #000;
+    color: #fff;
+}
+
+.minimal .theme-menu {
+    border-radius: 0;
+    border: 2px solid #000;
+}
+
+.minimal .theme-option:hover {
+    background: #f0f0f0;
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 420px) {
+    .calculator {
+        width: 100%;
+        max-width: 320px;
+        border-radius: 0;
+    }
+
+    .calculator.scientific {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .current {
+        font-size: 36px;
+    }
+
+    .btn {
+        height: 50px;
+        font-size: 18px;
+    }
+}

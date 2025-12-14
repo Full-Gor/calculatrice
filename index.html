@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculatrice</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calculator" id="calculator">
+        <div class="controls">
+            <button class="control-btn" id="themeBtn" title="Changer de thème">
+                <span class="icon">🎨</span>
+            </button>
+            <button class="control-btn" id="modeBtn" title="Mode scientifique">
+                <span class="icon">🔬</span>
+            </button>
+        </div>
+
+        <div class="display">
+            <div class="previous" id="previous"></div>
+            <div class="current" id="current">0</div>
+        </div>
+
+        <div class="buttons">
+            <!-- Boutons scientifiques (cachés par défaut) -->
+            <div class="scientific-buttons" id="scientificBtns">
+                <button class="btn func" data-action="sin">sin</button>
+                <button class="btn func" data-action="cos">cos</button>
+                <button class="btn func" data-action="tan">tan</button>
+                <button class="btn func" data-action="log">log</button>
+                <button class="btn func" data-action="ln">ln</button>
+                <button class="btn func" data-action="sqrt">√</button>
+                <button class="btn func" data-action="pow">x²</button>
+                <button class="btn func" data-action="pi">π</button>
+                <button class="btn func" data-action="exp">exp</button>
+                <button class="btn func" data-action="factorial">n!</button>
+                <button class="btn func" data-action="openParen">(</button>
+                <button class="btn func" data-action="closeParen">)</button>
+            </div>
+
+            <!-- Boutons standard -->
+            <div class="standard-buttons">
+                <button class="btn clear" data-action="clear">AC</button>
+                <button class="btn operator" data-action="toggleSign">±</button>
+                <button class="btn operator" data-action="percent">%</button>
+                <button class="btn operator" data-action="divide">÷</button>
+
+                <button class="btn number" data-value="7">7</button>
+                <button class="btn number" data-value="8">8</button>
+                <button class="btn number" data-value="9">9</button>
+                <button class="btn operator" data-action="multiply">×</button>
+
+                <button class="btn number" data-value="4">4</button>
+                <button class="btn number" data-value="5">5</button>
+                <button class="btn number" data-value="6">6</button>
+                <button class="btn operator" data-action="subtract">−</button>
+
+                <button class="btn number" data-value="1">1</button>
+                <button class="btn number" data-value="2">2</button>
+                <button class="btn number" data-value="3">3</button>
+                <button class="btn operator" data-action="add">+</button>
+
+                <button class="btn number zero" data-value="0">0</button>
+                <button class="btn number" data-action="decimal">.</button>
+                <button class="btn equals" data-action="equals">=</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu des thèmes -->
+    <div class="theme-menu" id="themeMenu">
+        <div class="theme-option" data-theme="light">
+            <span class="theme-preview light-preview"></span>
+            <span>Clair</span>
+        </div>
+        <div class="theme-option" data-theme="dark">
+            <span class="theme-preview dark-preview"></span>
+            <span>Sombre</span>
+        </div>
+        <div class="theme-option" data-theme="gradient">
+            <span class="theme-preview gradient-preview"></span>
+            <span>Gradient</span>
+        </div>
+        <div class="theme-option" data-theme="neon">
+            <span class="theme-preview neon-preview"></span>
+            <span>Néon</span>
+        </div>
+        <div class="theme-option" data-theme="minimal">
+            <span class="theme-preview minimal-preview"></span>
+            <span>Minimal</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
